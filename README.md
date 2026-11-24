@@ -7,7 +7,7 @@ This folder is also an **Obsidian vault**: open it in Obsidian and write. Settin
 ## Write a post
 
 1. **Ctrl+N** — a new note opens in `_writing/`. Name it with the post's title.
-2. **Alt+T** → *Post* — fills in the properties (title, description, date, tags, published).
+2. The Templater plugin fills in the properties automatically (title, description, date, tags, published).
 3. Write. Paste images with Ctrl+V; they're saved to `assets/img/` and work on the site.
 4. Check **published** when it's ready. Unchecked posts stay private.
 5. Click **Commit-and-sync** (Obsidian Git, left sidebar). The site updates in about a minute.
@@ -16,7 +16,7 @@ This folder is also an **Obsidian vault**: open it in Obsidian and write. Settin
 
 ## Add a project
 
-Right-click `_projects` → **New note**, name it, then **Alt+T** → *Project*.
+Right-click `_projects` → **New note** and name it. The project properties fill in automatically.
 
 | Property | Meaning |
 |---|---|
