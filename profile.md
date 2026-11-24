@@ -1,10 +1,11 @@
 ---
-title: About
-permalink: /about/
-prose: true
+title: Profile
+permalink: /profile/
+layout: profile
+headline: AI undergraduate, Gachon University
 ---
 
-I'm **Dohyun Kim**, an undergraduate in the Department of AI at Gachon University in Korea.
+I'm an undergraduate in the Department of AI at Gachon University in Korea.
 
 I want to understand how AI systems can get better from their own experience. Today's reinforcement learning mostly learns from a single outcome number per attempt, which wastes most of what happened along the way. I'm interested in richer ways to learn from experience, and in where that leads: AI that helps do AI research, and keeping what such systems value close to what people value.
 
@@ -13,6 +14,14 @@ I want to understand how AI systems can get better from their own experience. To
 - Learning from experience: reinforcement learning for LLMs and agents, and world models that predict the results of actions
 - Recursive self-improvement: AI systems that improve the next AI system, and why that loop stalls
 - Alignment: making what AI systems value match what people value
+
+<!--
+## Publications
+
+Remove the comment markers around this section when you have a paper. One entry looks like this:
+
+- **Paper Title.** Dohyun Kim, Coauthor Name. *Venue (e.g. NeurIPS Workshop)*, 2027. [[paper]](https://arxiv.org/abs/xxxx) [[code]](https://github.com/RealSeiro/xxxx)
+-->
 
 ## Education
 
@@ -34,7 +43,3 @@ Before moving to AI, I spent 2022–2024 on offensive security: binary exploitat
 ## Other
 
 - Military service, Republic of Korea (Jan 2024 – Jul 2025, honorably discharged)
-
-## Contact
-
-- GitHub: [RealSeiro](https://github.com/RealSeiro)

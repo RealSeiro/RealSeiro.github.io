@@ -40,7 +40,7 @@
         <span class="sep">|</span>
       </div>
       <ul class="menu">
-        {%- assign items = "Projects:/projects/,Posts:/posts/,Archive:/archive/,Search:/search/,Tags:/tags/,About:/about/" | split: "," -%}
+        {%- assign items = "Projects:/projects/,Posts:/posts/,Archive:/archive/,Search:/search/,Tags:/tags/,Profile:/profile/" | split: "," -%}
         {%- for item in items -%}
           {%- assign parts = item | split: ":" -%}
           {%- assign active = false -%}
@@ -70,6 +70,8 @@
       var root = document.documentElement;
       root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
       try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      var c = document.querySelector(".utterances-frame");   // keep the comment box in the same theme
+      if (c) c.contentWindow.postMessage({ type: "set-theme", theme: root.dataset.theme === "dark" ? "github-dark" : "github-light" }, "https://utteranc.es");
     });
     var topLink = document.getElementById("top-link");
     window.addEventListener("scroll", function () {
@@ -77,5 +79,8 @@
     }, { passive: true });
     topLink.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
   </script>
+  {% if site.goatcounter and jekyll.environment == "production" %}
+  <script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
 </body>
 </html>

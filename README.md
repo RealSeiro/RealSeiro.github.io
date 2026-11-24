@@ -39,7 +39,8 @@ Right-click `_projects` → **New note** and name it. The project properties fil
 
 - Name, email, LinkedIn, Scholar: `_config.yml`
 - Home page intro: `index.html`
-- About page: `about.md`
+- Profile page (bio, education, papers): `profile.md`
+- Photo: `assets/img/profile.jpg`
 - Look: `assets/css/main.css`
 
 ## Preview locally (optional)

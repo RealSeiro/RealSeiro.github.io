@@ -32,4 +32,5 @@ layout: default
     <ul class="post-tags">{% for tag in page.tags %}<li><a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></li>{% endfor %}</ul>
     {% endif %}
   </footer>
+  {% include comments.html %}
 </article>

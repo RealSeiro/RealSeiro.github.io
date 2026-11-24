@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<article class="post-single">
+  <header class="profile-head">
+    {% if site.author.photo %}<img class="avatar avatar-lg" src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}">{% endif %}
+    <div>
+      <h1>{{ site.author.name }}</h1>
+      {% if page.headline %}<p class="headline">{{ page.headline }}</p>{% endif %}
+      <ul class="profile-links">
+        {% if site.author.email %}<li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>{% endif %}
+        <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
+        {% if site.author.linkedin %}<li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>{% endif %}
+        {% if site.author.scholar %}<li><a href="{{ site.author.scholar }}">Google Scholar</a></li>{% endif %}
+      </ul>
+    </div>
+  </header>
+  <div class="post-content">{{ content }}</div>
+</article>

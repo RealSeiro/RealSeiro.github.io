@@ -2,10 +2,17 @@ title: Dohyun Kim
 description: AI undergraduate at Gachon University. I build things to find out how models can learn from their own experience.
 author:
   name: Dohyun Kim
+  photo: /assets/img/profile.jpg
   github: RealSeiro
-  email:      # e.g. you@example.com — shown on the home page and About when filled in
-  linkedin:   # e.g. dohyun-kim — leave empty to hide
-  scholar:    # Google Scholar URL — leave empty to hide
+  email:      # e.g. you@example.com — leave empty to hide
+  linkedin:   # the part after linkedin.com/in/, e.g. dohyun-kim — leave empty to hide
+  scholar:    # full Google Scholar profile URL — leave empty to hide
+
+# Visitor counts: sign up at goatcounter.com with the code below, then see stats at https://realseiro.goatcounter.com
+goatcounter: realseiro
+
+# Comments under posts and projects (stored as GitHub issues in this repo, via utterances)
+comments: true
 
 url: "https://realseiro.github.io"
 baseurl: ""
