@@ -12,7 +12,7 @@ This post is never shown on the site because `published` is unchecked. Use it as
 
 1. Press **Ctrl+N**. A new note opens in `_writing`.
 2. Type the title as the note's name.
-3. Press **Alt+T** to fill in the post template.
+3. The properties at the top fill in automatically (Templater).
 4. Write. Turn on **published** when it's ready.
 5. Click **Commit-and-sync** in the left sidebar (the Obsidian Git icon). It's live in about a minute.
 

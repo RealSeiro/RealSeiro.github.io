@@ -1,7 +1,7 @@
 ---
-title: "{{title}}"
+title: "<% tp.file.title %>"
 description: 
-date: {{date}}
+date: <% tp.date.now("YYYY-MM-DD") %>
 period: 
 role: 
 status: In progress
