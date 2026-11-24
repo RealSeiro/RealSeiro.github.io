@@ -129,6 +129,26 @@ img, svg { display: block; }
 .badge-muted { color: var(--secondary); border-color: var(--tertiary); margin-left: 10px; font-size: 11px; vertical-align: 3px; }
 .empty { color: var(--secondary); }
 
+/* ---------- photo & profile ---------- */
+.avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 1px solid var(--border); }
+.avatar-lg { width: 132px; height: 132px; margin: 0; flex-shrink: 0; }
+.home-info .entry-footer { gap: 18px; }
+.profile-btn {
+  font-size: 14px; font-weight: 500; color: var(--primary); padding: 6px 14px;
+  border: 1px solid var(--tertiary); border-radius: 99px;
+}
+.profile-btn:hover { background: var(--code-bg); }
+.profile-head { display: flex; align-items: center; gap: 28px; margin: 24px 0 36px; }
+.profile-head h1 { font-size: 40px; }
+.profile-head .headline { margin: 6px 0 12px; color: var(--secondary); font-size: 17px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; }
+.profile-links a { border-bottom: 1px solid var(--tertiary); }
+.profile-links a:hover { border-color: var(--primary); }
+
+/* ---------- comments ---------- */
+.comments { margin-top: 48px; }
+.comments .utterances { max-width: 100%; }
+
 /* ---------- page / post headers ---------- */
 .page-header, .post-header { margin: 24px auto var(--content-gap); }
 .page-header h1 { font-size: 40px; }
@@ -276,6 +296,9 @@ img, svg { display: block; }
   .entry-header h2 { font-size: 21px; }
   .chips { margin-left: 0; margin-top: 6px; width: 100%; }
   .archive-month { flex-direction: column; }
+  .profile-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .profile-head h1 { font-size: 32px; }
+  .avatar-lg { width: 112px; height: 112px; }
   .archive-month-header { margin: 10px 0 0; width: auto; }
   .top-link { right: 16px; bottom: 30px; }
 }

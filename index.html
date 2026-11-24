@@ -2,11 +2,12 @@
 layout: default
 ---
 <article class="first-entry home-info">
+  {% if site.author.photo %}<a href="{{ '/profile/' | relative_url }}"><img class="avatar" src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}"></a>{% endif %}
   <header class="entry-header"><h1>Hi, I'm Dohyun 👋</h1></header>
   <div class="entry-content">
     <p>I'm an AI undergraduate at Gachon University. I'm interested in how models can learn from their own experience, and in what it takes for an AI to get better at AI research. This site collects my projects and notes.</p>
   </div>
-  <footer class="entry-footer">{% include social.html %}</footer>
+  <footer class="entry-footer">{% include social.html %}<a class="profile-btn" href="{{ '/profile/' | relative_url }}">Profile →</a></footer>
 </article>
 
 {% assign projects = site.projects | sort: "date" | reverse %}
