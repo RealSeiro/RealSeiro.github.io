@@ -1,67 +1,38 @@
-# Gesko
+# realseiro.github.io
 
-Simple and minimal Jekyll blog. 
-Forked from [Asko](https://github.com/manuelmazzuola/asko).
-Original theme from [Sidey](https://github.com/ronv/sidey).
+Personal research blog — <https://realseiro.github.io>
 
-### Features
+## Write a post
 
-- [x] Responsive Design
-- [x] Dark/Ligh theme 🌗
-- [x] Inline CSS
-- [x] Anchor headings
-- [x] Tags & Tag pages 
-- [x] 404 page 
-- [x] Robots.txt 🤖
-- [x] Atom & Json feeds 📡
-- [x] Sass 
-- [x] About page, with Timeline! 🗣️
-- [x] PageSpeed and w3Validator tests PASSED ✔️
-- [x] Search bar 🔎
-- [x] Next & Previous Post ⏮️ ⏭️
-- [x] Automatic/Manual reading time estimation 🕐
-- [x] Disqus section (optional) ✍️ 
+Add a file to `_posts/` named `YYYY-MM-DD-some-title.md`:
 
-
-## Screenshot
-
-![light-theme](https://github.com/DavideBri/Gesko/blob/master/light-theme.jpg)
-![dark-theme](https://github.com/DavideBri/Gesko/blob/master/dark-theme.jpg)
-
-## Installation
-
-Be sure to have all [you need](https://jekyllrb.com/docs/installation/) before running anything. 
-
-Run local server:
-
-```bash
-$ git clone https://github.com/DavideBri/Gesko.git
-$ cd Gesko
-$ bundle install
-$ bundle exec jekyll build
-$ bundle exec jekyll serve
-```
-
-Navigate to `localhost:4000`. You're Welcome, Fork and be Stargazer.
-If you want to upload it to Github Pages, remember to update the `_congif.yml` and if you are going to upload in a repo called yournickname.github.io, remember to update the `{{ site.baseurl }}` to `{{ site.url }}` .
-Note that there is also a gtag in the [`_layouts/default.html`](https://github.com/DavideBri/Gesko/blob/6776e4afc384dc3d50ce2001715929c8e70a914c/_layouts/default.html#L9), you should remove it.
-
-To create new tag, create a folder in `tag/` with the name of the new one. In this folder add an `index.html` file and just add this header:
-```
+```markdown
 ---
-layout: tag
-tag: yourNewTag
+title: "Post title"
+subtitle: Optional one-line summary   # shown under the title and on the home page
+tags: [rl, alignment]                 # optional
 ---
+
+Text in Markdown.
 ```
-Then build again and you're ready!!
 
-## Contributing
+Commit and push to `master`; the site rebuilds in about a minute.
+You can do this straight from the GitHub website (Add file → Create new file).
 
-Yeaaa feel free to open a pull request.
+- **Math**: `$$ ... $$` inline or on its own lines (KaTeX).
+- **Code**: fenced blocks with a language, e.g. ```` ```python ````.
+- **Images**: put them in `assets/img/` and write `![caption](/assets/img/name.png)`.
+- **Draft**: add `published: false` to the front matter.
 
+## Edit the site
 
-If you see any typos or formatting errors in a post, or want to helping reduce backlogs or any other issue that needs to be addressed, please do not hesitate to open a pull request and fix it!, please read [contributing](./CONTRIBUTING.md) before PR.
+- Name, tagline, links: `_config.yml`
+- About page: `about.md`
+- Look: `assets/css/main.css`
 
-## License
+## Preview locally
 
-This project is open source and available under the [MIT License](LICENSE.md).
+```sh
+bundle install
+bundle exec jekyll serve   # http://localhost:4000
+```
