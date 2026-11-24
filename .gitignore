@@ -4,3 +4,10 @@ _site/
 vendor/
 Gemfile.lock
 .DS_Store
+
+# Obsidian: keep the shared settings, skip per-device state and plugin code
+.obsidian/workspace*.json
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/manifest.json
+.obsidian/plugins/*/styles.css
+.trash/

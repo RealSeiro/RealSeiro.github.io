@@ -11,7 +11,7 @@ layout: default
     </div>
   </header>
 
-  <div class="post-content">{{ content }}</div>
+  <div class="post-content">{{ content | replace: 'src="assets/', 'src="/assets/' | replace: 'src="../assets/', 'src="/assets/' | replace: 'src="../../assets/', 'src="/assets/' }}</div>
   {% if page.toc %}{% include toc.html %}{% endif %}
 
   <footer class="post-footer">

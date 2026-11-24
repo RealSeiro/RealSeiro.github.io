@@ -2,7 +2,7 @@
 layout: null
 permalink: /search.json
 ---
-{%- assign all = site.posts | concat: site.projects -%}
+{%- assign all = site.writing | concat: site.projects -%}
 [
 {%- for e in all -%}
   {

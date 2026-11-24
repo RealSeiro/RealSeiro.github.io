@@ -11,8 +11,8 @@ url: "https://realseiro.github.io"
 baseurl: ""
 lang: en
 timezone: Asia/Seoul
+future: true          # posts dated "today" in Korea are still "tomorrow" on the build server (UTC)
 
-permalink: /posts/:year/:title/
 
 markdown: kramdown
 kramdown:
@@ -21,9 +21,19 @@ kramdown:
   math_engine: mathjax   # $$...$$ becomes \(...\) / \[...\]; KaTeX renders it in the browser
 
 collections:
+  writing:              # blog posts — the filename can be anything (Obsidian names files after the title)
+    output: true
+    permalink: /posts/:slug/
+    sort_by: date
   projects:
     output: true
-    permalink: /projects/:name/
+    permalink: /projects/:slug/
+
+feed:
+  path: /feed/unused.xml   # Jekyll's built-in posts folder is unused; the real feed is below
+  collections:
+    writing:
+      path: /feed.xml
 
 plugins:
   - jekyll-feed
@@ -31,7 +41,7 @@ plugins:
   - jekyll-sitemap
 
 defaults:
-  - scope: { path: "", type: posts }
+  - scope: { path: "", type: writing }
     values: { layout: post, math: true, toc: true }
   - scope: { path: "", type: projects }
     values: { layout: project, math: true, toc: true }
@@ -44,3 +54,4 @@ exclude:
   - Gemfile.lock
   - vendor
   - .jekyll-cache
+  - _templates

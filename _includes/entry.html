@@ -7,7 +7,7 @@
   <footer class="entry-footer">
     {%- if e.collection == "projects" -%}
       {{ e.period }}{% if e.role %}&nbsp;|&nbsp;{{ e.role }}{% endif %}
-      {% if e.stack %}<span class="chips">{% for s in e.stack limit: 4 %}<span class="chip">{{ s }}</span>{% endfor %}</span>{% endif %}
+      {% if e.stack.size > 0 %}<span class="chips">{% for s in e.stack limit: 4 %}<span class="chip">{{ s }}</span>{% endfor %}</span>{% endif %}
     {%- else -%}
       {{ e.date | date: "%B %-d, %Y" }}&nbsp;|&nbsp;{% include read-time.html content=e.content %} min
     {%- endif -%}

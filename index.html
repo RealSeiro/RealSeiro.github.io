@@ -16,7 +16,8 @@ layout: default
 {% for p in featured %}{% include entry.html e=p %}{% endfor %}
 {% endif %}
 
-{% if site.posts.size > 0 %}
+{% assign posts = site.writing | sort: "date" | reverse %}
+{% if posts.size > 0 %}
 <div class="section-title"><h2>Recent posts</h2><a href="{{ '/posts/' | relative_url }}">All posts →</a></div>
-{% for p in site.posts limit: 5 %}{% include entry.html e=p %}{% endfor %}
+{% for p in posts limit: 5 %}{% include entry.html e=p %}{% endfor %}
 {% endif %}

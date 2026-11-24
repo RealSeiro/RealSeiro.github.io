@@ -2,54 +2,49 @@
 
 Personal site and blog — <https://realseiro.github.io>
 
-Everything is plain Markdown. Push to `master` and the site rebuilds in about a minute.
-You can do all of this from the GitHub website (Add file → Create new file).
-
-## Add a project
-
-Create `_projects/your-project.md`:
-
-```markdown
----
-title: "Project name"
-description: One sentence on what it is.         # shown on the cards
-date: 2026-12-15                                 # used for sorting (newest first)
-period: Dec 2026                                 # shown as written, e.g. "Oct – Dec 2026"
-role: Solo project                               # or "Team lead", "Backend lead", ...
-status: In progress                              # optional; "In progress" adds a badge
-featured: true                                   # optional; shows it on the home page
-stack: [Python, PyTorch]
-tags: [reinforcement learning]
-links:
-  - name: GitHub
-    url: https://github.com/RealSeiro/...
----
-
-## Overview
-...
-```
+This folder is also an **Obsidian vault**: open it in Obsidian and write. Settings come preconfigured.
 
 ## Write a post
 
-Copy `_drafts/example-post.md` into `_posts/` as `YYYY-MM-DD-some-title.md`.
-That file shows everything a post can contain.
+1. **Ctrl+N** — a new note opens in `_writing/`. Name it with the post's title.
+2. **Alt+T** → *Post* — fills in the properties (title, description, date, tags, published).
+3. Write. Paste images with Ctrl+V; they're saved to `assets/img/` and work on the site.
+4. Check **published** when it's ready. Unchecked posts stay private.
+5. Click **Commit-and-sync** (Obsidian Git, left sidebar). The site updates in about a minute.
 
-- **Table of contents**: built automatically from `##` and `###` headings.
-- **Math**: `$$ ... $$`, inline or on its own lines (KaTeX).
+`_writing/How to Write a Post.md` shows everything a post can contain (math, code, tables, images).
+
+## Add a project
+
+Right-click `_projects` → **New note**, name it, then **Alt+T** → *Project*.
+
+| Property | Meaning |
+|---|---|
+| `description` | One sentence, shown on the cards |
+| `date` | Used for sorting (newest first) |
+| `period` | Shown as written, e.g. `Oct – Dec 2026` |
+| `role` | e.g. `Solo project`, `Backend lead` |
+| `status` | `In progress` adds a badge |
+| `featured` | Checked → shown on the home page |
+| `stack`, `tags` | Lists |
+| `links` | Edit in source mode: `- name: GitHub` / `url: https://...` |
+
+## Writing features
+
+- **Table of contents**: built from `##` and `###` headings.
+- **Math**: `$$ ... $$`, inline or on its own lines.
 - **Code**: fenced blocks with a language, e.g. ```` ```python ````.
-- **Images**: put them in `assets/img/` and write `![caption](/assets/img/name.png)`.
-- **Drafts**: files in `_drafts/` are never published.
 
 ## Edit the site
 
-- Name, email, LinkedIn, Scholar links: `_config.yml`
+- Name, email, LinkedIn, Scholar: `_config.yml`
 - Home page intro: `index.html`
 - About page: `about.md`
 - Look: `assets/css/main.css`
 
-## Preview locally
+## Preview locally (optional)
 
 ```sh
 bundle install
-bundle exec jekyll serve --drafts   # http://localhost:4000
+bundle exec jekyll serve   # http://localhost:4000
 ```

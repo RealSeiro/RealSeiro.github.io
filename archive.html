@@ -2,7 +2,7 @@
 title: Archive
 permalink: /archive/
 ---
-{% assign all = site.posts | concat: site.projects | sort: "date" | reverse %}
+{% assign all = site.writing | concat: site.projects | sort: "date" | reverse %}
 {% assign years = all | group_by_exp: "e", "e.date | date: '%Y'" %}
 {% for y in years %}
 <div class="archive-year">

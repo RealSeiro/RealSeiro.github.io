@@ -2,7 +2,7 @@
 title: Tags
 permalink: /tags/
 ---
-{% assign all = site.posts | concat: site.projects | sort: "date" | reverse %}
+{% assign all = site.writing | concat: site.projects | sort: "date" | reverse %}
 {% capture tag_str %}{% for e in all %}{% for t in e.tags %}{{ t }}|{% endfor %}{% endfor %}{% endcapture %}
 {% assign tags = tag_str | split: "|" | uniq | sort_natural %}
 

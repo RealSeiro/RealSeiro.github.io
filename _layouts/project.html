@@ -11,20 +11,20 @@ layout: default
     </div>
   </header>
 
-  {% if page.stack or page.links %}
+  {% if page.stack.size > 0 or page.links.size > 0 %}
   <dl class="project-facts">
-    {% if page.stack %}
+    {% if page.stack.size > 0 %}
     <dt>Stack</dt>
     <dd>{% for s in page.stack %}<span class="chip">{{ s }}</span>{% endfor %}</dd>
     {% endif %}
-    {% if page.links %}
+    {% if page.links.size > 0 %}
     <dt>Links</dt>
     <dd>{% for l in page.links %}<a href="{{ l.url }}">{{ l.name }} ↗</a>{% unless forloop.last %}<span class="dotsep">·</span>{% endunless %}{% endfor %}</dd>
     {% endif %}
   </dl>
   {% endif %}
 
-  <div class="post-content">{{ content }}</div>
+  <div class="post-content">{{ content | replace: 'src="assets/', 'src="/assets/' | replace: 'src="../assets/', 'src="/assets/' | replace: 'src="../../assets/', 'src="/assets/' }}</div>
   {% if page.toc %}{% include toc.html %}{% endif %}
 
   <footer class="post-footer">
