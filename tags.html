@@ -2,21 +2,25 @@
 title: Tags
 permalink: /tags/
 ---
-{% assign tags = site.tags | sort %}
-{% if tags.size == 0 %}<p class="empty">No tags yet.</p>{% endif %}
-<div class="tag-cloud">
-  {% for t in tags %}<a href="#{{ t[0] | slugify }}">#{{ t[0] }} <small>{{ t[1].size }}</small></a>{% endfor %}
-</div>
+{% assign all = site.posts | concat: site.projects | sort: "date" | reverse %}
+{% capture tag_str %}{% for e in all %}{% for t in e.tags %}{{ t }}|{% endfor %}{% endfor %}{% endcapture %}
+{% assign tags = tag_str | split: "|" | uniq | sort_natural %}
+
+<ul class="terms-tags">
+  {% for t in tags %}
+  {% assign n = 0 %}{% for e in all %}{% if e.tags contains t %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+  <li><a href="#{{ t | slugify }}">{{ t }} <sup><strong><sup>{{ n }}</sup></strong></sup></a></li>
+  {% endfor %}
+</ul>
+
 {% for t in tags %}
-<section class="year" id="{{ t[0] | slugify }}">
-  <h2>#{{ t[0] }}</h2>
-  <ul class="post-list">
-    {% for p in t[1] %}
-    <li>
-      <a href="{{ p.url | relative_url }}"><span class="t">{{ p.title }}</span></a>
-      <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %-d, %Y" }}</time>
-    </li>
-    {% endfor %}
-  </ul>
+<section class="tag-group" id="{{ t | slugify }}">
+  <h2>{{ t }}</h2>
+  {% for e in all %}{% if e.tags contains t %}
+  <a class="tag-row" href="{{ e.url | relative_url }}">
+    <span>{{ e.title }}{% if e.collection == "projects" %}<span class="badge badge-muted">Project</span>{% endif %}</span>
+    <time>{% if e.collection == "projects" %}{{ e.period }}{% else %}{{ e.date | date: "%b %-d, %Y" }}{% endif %}</time>
+  </a>
+  {% endif %}{% endfor %}
 </section>
 {% endfor %}

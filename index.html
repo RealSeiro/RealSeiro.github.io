@@ -1,28 +1,22 @@
 ---
 layout: default
 ---
-<section class="intro">
-  <p>{{ site.tagline }}</p>
-</section>
+<article class="first-entry home-info">
+  <header class="entry-header"><h1>Hi, I'm Dohyun 👋</h1></header>
+  <div class="entry-content">
+    <p>I'm an AI undergraduate at Gachon University. I'm interested in how models can learn from their own experience, and in what it takes for an AI to get better at AI research. This site collects my projects and notes.</p>
+  </div>
+  <footer class="entry-footer">{% include social.html %}</footer>
+</article>
 
-{% if site.posts.size == 0 %}
-<p class="empty">No posts yet.</p>
+{% assign projects = site.projects | sort: "date" | reverse %}
+{% assign featured = projects | where: "featured", true %}
+{% if featured.size > 0 %}
+<div class="section-title"><h2>Featured projects</h2><a href="{{ '/projects/' | relative_url }}">All projects →</a></div>
+{% for p in featured %}{% include entry.html e=p %}{% endfor %}
 {% endif %}
 
-{% assign by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
-{% for year in by_year %}
-<section class="year">
-  <h2>{{ year.name }}</h2>
-  <ul class="post-list">
-    {% for p in year.items %}
-    <li>
-      <a href="{{ p.url | relative_url }}">
-        <span class="t">{{ p.title }}</span>
-        {% if p.subtitle %}<span class="s">{{ p.subtitle }}</span>{% endif %}
-      </a>
-      <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %-d" }}</time>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-{% endfor %}
+{% if site.posts.size > 0 %}
+<div class="section-title"><h2>Recent posts</h2><a href="{{ '/posts/' | relative_url }}">All posts →</a></div>
+{% for p in site.posts limit: 5 %}{% include entry.html e=p %}{% endfor %}
+{% endif %}

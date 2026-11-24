@@ -1,27 +1,28 @@
 ---
 layout: default
 ---
-{%- assign words = content | strip_html | number_of_words: "auto" -%}
-{%- assign minutes = words | divided_by: 220 | plus: 1 -%}
-<article class="post">
-  <header class="post-head">
-    <p class="meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-      <span class="dot">·</span>{{ minutes }} min read
-    </p>
-    <h1>{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
-    {% if page.tags.size > 0 %}
-    <p class="tags">{% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
-    {% endif %}
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="{{ '/' | relative_url }}">Home</a>&nbsp;»&nbsp;<a href="{{ '/posts/' | relative_url }}">Posts</a></div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}<div class="post-description">{{ page.description }}</div>{% endif %}
+    <div class="post-meta">
+      Date: {{ page.date | date: "%B %-d, %Y" }}&nbsp;|&nbsp;Estimated Reading Time: {% include read-time.html content=content %} min&nbsp;|&nbsp;Author: {{ page.author | default: site.author.name }}
+    </div>
   </header>
 
-  <div class="prose">{{ content }}</div>
+  <div class="post-content">{{ content }}</div>
+  {% if page.toc %}{% include toc.html %}{% endif %}
 
-  {% if page.previous or page.next %}
-  <nav class="post-nav">
-    {% if page.previous %}<a class="prev" href="{{ page.previous.url | relative_url }}"><span>← Older</span>{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
-    {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><span>Newer →</span>{{ page.next.title }}</a>{% endif %}
-  </nav>
-  {% endif %}
+  <footer class="post-footer">
+    {% if page.tags.size > 0 %}
+    <ul class="post-tags">{% for tag in page.tags %}<li><a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></li>{% endfor %}</ul>
+    {% endif %}
+    {% if page.previous or page.next %}
+    <nav class="paginav">
+      {% if page.next %}<a class="prev" href="{{ page.next.url | relative_url }}"><span class="title">« Newer</span><br><span>{{ page.next.title }}</span></a>{% endif %}
+      {% if page.previous %}<a class="next" href="{{ page.previous.url | relative_url }}"><span class="title">Older »</span><br><span>{{ page.previous.title }}</span></a>{% endif %}
+    </nav>
+    {% endif %}
+  </footer>
 </article>

@@ -1,0 +1,29 @@
+---
+title: Archive
+permalink: /archive/
+---
+{% assign all = site.posts | concat: site.projects | sort: "date" | reverse %}
+{% assign years = all | group_by_exp: "e", "e.date | date: '%Y'" %}
+{% for y in years %}
+<div class="archive-year">
+  <h2 class="archive-year-header">{{ y.name }}<sup class="archive-count">&nbsp;&nbsp;{{ y.size }}</sup></h2>
+  {% assign months = y.items | group_by_exp: "e", "e.date | date: '%B'" %}
+  {% for m in months %}
+  <div class="archive-month">
+    <h3 class="archive-month-header">{{ m.name }}<sup class="archive-count">&nbsp;&nbsp;{{ m.size }}</sup></h3>
+    <div class="archive-posts">
+      {% for e in m.items %}
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">{{ e.title }}{% if e.collection == "projects" %}<span class="badge badge-muted">Project</span>{% endif %}</h3>
+        <div class="archive-meta">
+          {% if e.collection == "projects" %}{{ e.period }}{% if e.role %}&nbsp;|&nbsp;Role: {{ e.role }}{% endif %}
+          {% else %}Date: {{ e.date | date: "%B %-d, %Y" }}&nbsp;|&nbsp;Estimated Reading Time: {% include read-time.html content=e.content %} min&nbsp;|&nbsp;Author: {{ site.author.name }}{% endif %}
+        </div>
+        <a class="entry-link" aria-label="{{ e.title }}" href="{{ e.url | relative_url }}"></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}

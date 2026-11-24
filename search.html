@@ -1,0 +1,49 @@
+---
+title: Search
+permalink: /search/
+---
+<div id="searchbox">
+  <input id="searchInput" autofocus placeholder="Search projects and posts ↵" aria-label="search" type="search" autocomplete="off">
+  <ul id="searchResults" aria-label="search results"></ul>
+</div>
+
+<script>
+  (function () {
+    var input = document.getElementById("searchInput"), out = document.getElementById("searchResults"), docs = [];
+    fetch("{{ '/search.json' | relative_url }}").then(function (r) { return r.json(); }).then(function (d) {
+      docs = d;
+      var q = new URLSearchParams(location.search).get("q");
+      if (q) { input.value = q; run(); }
+    });
+
+    function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+    function run() {
+      var words = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      out.innerHTML = "";
+      if (!words.length) return;
+      var hits = docs.map(function (doc) {
+        var t = doc.title.toLowerCase(), body = (doc.description + " " + doc.tags + " " + doc.content).toLowerCase(), score = 0;
+        for (var i = 0; i < words.length; i++) {
+          var inT = t.indexOf(words[i]) >= 0, inB = body.indexOf(words[i]) >= 0;
+          if (!inT && !inB) return null;           // every word must appear somewhere
+          score += inT ? 3 : 1;
+        }
+        return { doc: doc, score: score };
+      }).filter(Boolean).sort(function (a, b) { return b.score - a.score; });
+
+      if (!hits.length) { out.innerHTML = '<li class="empty">No results.</li>'; return; }
+      hits.slice(0, 20).forEach(function (h) {
+        var li = document.createElement("li");
+        li.innerHTML = '<header class="entry-header">' + esc(h.doc.title) + '&nbsp;»</header>' +
+          (h.doc.description ? '<div class="entry-sub">' + esc(h.doc.description) + '</div>' : '') +
+          '<a href="' + h.doc.url + '" aria-label="' + esc(h.doc.title) + '"></a>';
+        out.appendChild(li);
+      });
+    }
+    input.addEventListener("input", run);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { var a = out.querySelector("a"); if (a) location.href = a.href; }
+    });
+  })();
+</script>

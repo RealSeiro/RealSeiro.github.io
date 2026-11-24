@@ -1,0 +1,8 @@
+---
+title: Posts
+permalink: /posts/
+---
+{% if site.posts.size == 0 %}
+<p class="empty">No posts yet — the first one is on its way.</p>
+{% endif %}
+{% for p in site.posts %}{% include entry.html e=p %}{% endfor %}

@@ -1,23 +1,29 @@
 title: Dohyun Kim
-tagline: Notes on AI research — learning from experience, alignment, and what I'm building.
-description: Research notes by Dohyun Kim, AI undergraduate at Gachon University.
+description: AI undergraduate at Gachon University. I build things to find out how models can learn from their own experience.
 author:
   name: Dohyun Kim
   github: RealSeiro
-  email: # add if you want it shown
+  email:      # e.g. you@example.com — shown on the home page and About when filled in
+  linkedin:   # e.g. dohyun-kim — leave empty to hide
+  scholar:    # Google Scholar URL — leave empty to hide
 
 url: "https://realseiro.github.io"
 baseurl: ""
 lang: en
 timezone: Asia/Seoul
 
-permalink: /:year/:month/:title/
+permalink: /posts/:year/:title/
 
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  math_engine: mathjax   # turns $$...$$ into \(...\) / \[...\]; KaTeX renders it in the browser
+  math_engine: mathjax   # $$...$$ becomes \(...\) / \[...\]; KaTeX renders it in the browser
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
 
 plugins:
   - jekyll-feed
@@ -26,7 +32,9 @@ plugins:
 
 defaults:
   - scope: { path: "", type: posts }
-    values: { layout: post, math: true }
+    values: { layout: post, math: true, toc: true }
+  - scope: { path: "", type: projects }
+    values: { layout: project, math: true, toc: true }
   - scope: { path: "" }
     values: { layout: page }
 

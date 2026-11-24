@@ -1,0 +1,16 @@
+{%- assign e = include.e -%}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2>{{ e.title }}{% if e.status == "In progress" %}<span class="badge">In progress</span>{% endif %}</h2>
+  </header>
+  {% if e.description %}<div class="entry-content"><p>{{ e.description }}</p></div>{% endif %}
+  <footer class="entry-footer">
+    {%- if e.collection == "projects" -%}
+      {{ e.period }}{% if e.role %}&nbsp;|&nbsp;{{ e.role }}{% endif %}
+      {% if e.stack %}<span class="chips">{% for s in e.stack limit: 4 %}<span class="chip">{{ s }}</span>{% endfor %}</span>{% endif %}
+    {%- else -%}
+      {{ e.date | date: "%B %-d, %Y" }}&nbsp;|&nbsp;{% include read-time.html content=e.content %} min
+    {%- endif -%}
+  </footer>
+  <a class="entry-link" aria-label="{{ e.title }}" href="{{ e.url | relative_url }}"></a>
+</article>
