@@ -6,5 +6,12 @@
   "newFileFolderPath": "_writing",
   "alwaysUpdateLinks": true,
   "propertiesInDocument": "visible",
-  "userIgnoreFilters": ["_site/", "_layouts/", "_includes/", ".github/", "assets/css/", "vendor/"]
+  "userIgnoreFilters": [
+    "_site/",
+    "_layouts/",
+    "_includes/",
+    ".github/",
+    "assets/css/",
+    "vendor/"
+  ]
 }
