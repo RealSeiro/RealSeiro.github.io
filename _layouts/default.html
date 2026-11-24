@@ -40,13 +40,15 @@
         <span class="sep">|</span>
       </div>
       <ul class="menu">
-        {%- assign items = "Projects:/projects/,Posts:/posts/,Archive:/archive/,Search:/search/,Tags:/tags/,Profile:/profile/" | split: "," -%}
+        {%- assign items = "Projects:/projects/,Posts:/posts/,Profile:/profile/" | split: "," -%}
         {%- for item in items -%}
           {%- assign parts = item | split: ":" -%}
           {%- assign active = false -%}
           {%- if here contains parts[1] -%}{%- assign active = true -%}{%- endif -%}
+          {%- if parts[1] == "/posts/" -%}{%- if here == "/archive/" or here == "/tags/" -%}{%- assign active = true -%}{%- endif -%}{%- endif -%}
           <li><a href="{{ parts[1] | relative_url }}"{% if active %} class="active"{% endif %}>{{ parts[0] }}</a></li>
         {%- endfor -%}
+        <li><a href="{{ '/search/' | relative_url }}" class="icon-link{% if here == '/search/' %} active{% endif %}" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a></li>
       </ul>
     </nav>
   </header>

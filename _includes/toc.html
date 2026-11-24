@@ -5,7 +5,7 @@
 <script>
   (function () {
     var heads = document.querySelectorAll(".post-content h2[id], .post-content h3[id]");
-    if (heads.length < 2) return;
+    if (heads.length < 4) return;   // short pages don't need a table of contents
     var list = document.getElementById("toc-list"), parent = list;
     heads.forEach(function (h) {
       var li = document.createElement("li"), a = document.createElement("a");

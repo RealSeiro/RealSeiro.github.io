@@ -2,6 +2,7 @@
 title: Posts
 permalink: /posts/
 ---
+<nav class="subnav"><a href="{{ '/archive/' | relative_url }}">Archive by date →</a><a href="{{ '/tags/' | relative_url }}">Browse by tag →</a></nav>
 {% assign posts = site.writing | sort: "date" | reverse %}
 {% if posts.size == 0 %}
 <p class="empty">No posts yet — the first one is on its way.</p>

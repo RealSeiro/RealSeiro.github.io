@@ -1,24 +1,46 @@
 ---
 layout: default
 ---
-<article class="first-entry home-info">
-  {% if site.author.photo %}<a href="{{ '/profile/' | relative_url }}"><img class="avatar" src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}"></a>{% endif %}
-  <header class="entry-header"><h1>Hi, I'm Dohyun 👋</h1></header>
-  <div class="entry-content">
-    <p>I'm an AI undergraduate at Gachon University. I'm interested in how models can learn from their own experience, and in what it takes for an AI to get better at AI research. This site collects my projects and notes.</p>
+<section class="hero">
+  {% if site.author.photo %}<img class="hero-photo" src="{{ site.author.photo | relative_url }}" alt="{{ site.author.name }}">{% endif %}
+  <div class="hero-text">
+    <h1>{{ site.author.name }}</h1>
+    <p class="hero-role">AI Undergraduate · Gachon University</p>
+    <p class="hero-bio">I study how AI systems can learn from their own experience, and what it would take for an AI to get better at AI research while staying aligned with what people value.</p>
+    <div class="hero-buttons">
+      {% if site.author.email %}<a class="btn btn-primary" href="mailto:{{ site.author.email }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>{% endif %}
+      <a class="btn" href="https://github.com/{{ site.author.github }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+      {% if site.author.linkedin %}<a class="btn" href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>{% endif %}
+      <a class="btn" href="{{ '/profile/' | relative_url }}">Full profile →</a>
+    </div>
   </div>
-  <footer class="entry-footer">{% include social.html %}<a class="profile-btn" href="{{ '/profile/' | relative_url }}">Profile →</a></footer>
-</article>
+</section>
+
+{%- assign news = site.pages | where: "url", "/news/" | first -%}
+{%- if news -%}
+{%- assign news_html = news.content | markdownify -%}
+{%- assign news_count = news_html | split: "<li>" | size | minus: 1 -%}
+<section class="home-section">
+  <div class="section-title"><h2>News</h2>{% if news_count > 5 %}<a href="{{ '/news/' | relative_url }}">All news →</a>{% endif %}</div>
+  <div class="news">{{ news_html }}</div>
+</section>
+{%- endif -%}
 
 {% assign projects = site.projects | sort: "date" | reverse %}
 {% assign featured = projects | where: "featured", true %}
 {% if featured.size > 0 %}
-<div class="section-title"><h2>Featured projects</h2><a href="{{ '/projects/' | relative_url }}">All projects →</a></div>
-{% for p in featured %}{% include entry.html e=p %}{% endfor %}
+<section class="home-section">
+  <div class="section-title"><h2>Featured projects</h2><a href="{{ '/projects/' | relative_url }}">All projects →</a></div>
+  {% for p in featured %}{% include entry.html e=p %}{% endfor %}
+</section>
 {% endif %}
 
 {% assign posts = site.writing | sort: "date" | reverse %}
 {% if posts.size > 0 %}
-<div class="section-title"><h2>Recent posts</h2><a href="{{ '/posts/' | relative_url }}">All posts →</a></div>
-{% for p in posts limit: 5 %}{% include entry.html e=p %}{% endfor %}
+<section class="home-section">
+  <div class="section-title"><h2>Recent posts</h2><a href="{{ '/posts/' | relative_url }}">All posts →</a></div>
+  {% for p in posts limit: 3 %}{% include entry.html e=p %}{% endfor %}
+</section>
 {% endif %}

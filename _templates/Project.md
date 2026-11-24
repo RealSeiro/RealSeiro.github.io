@@ -6,6 +6,7 @@ period:
 role: 
 status: In progress
 featured: false
+result: 
 stack: []
 tags: []
 links: []

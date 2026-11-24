@@ -26,8 +26,19 @@ Right-click `_projects` → **New note** and name it. The project properties fil
 | `role` | e.g. `Solo project`, `Backend lead` |
 | `status` | `In progress` adds a badge |
 | `featured` | Checked → shown on the home page |
+| `result` | Optional one-line outcome (award, rank, score), shown with a medal icon |
 | `stack`, `tags` | Lists |
 | `links` | Edit in source mode: `- name: GitHub` / `url: https://...` |
+
+## Add news
+
+Open `news.md` and add a line at the top:
+
+```markdown
+- **Dec 2026** What happened, in one sentence. [Read more](/projects/your-project/)
+```
+
+The home page shows the five newest lines.
 
 ## Writing features
 

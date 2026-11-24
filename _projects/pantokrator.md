@@ -5,6 +5,7 @@ date: 2024-12-31
 period: 2022 – 2024
 role: Author
 featured: true
+result: Excellence Award, Red Raccoon 2024 · Finalist, CCE 2024
 stack: [Pwnable, Web hacking, Reverse engineering]
 tags: [security, writing]
 links:
